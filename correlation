@@ -1,0 +1,66 @@
+import numpy as np
+def sqauress(a,b):
+    for i in range(len(a)):
+        b[i]=a[i]*a[i]
+    return b
+def length(a):
+    c=0
+    for i in a:
+        c=c+1
+    return c
+def sums(a):
+    s=0
+    for i in a:
+        s=s+i
+    return s
+def mean(a):
+    s=sums(a)
+    return s/length(a)
+def cov():
+    cov=(1/length(x))*sumxy-(xbar)*ybar
+    return cov
+def variancex(x):
+    var=(1/length(x))*sumx-xbar**2
+    return int(var)
+def stdx(x):
+    var=variancex(x)
+    return var**0.5
+def variancey(y):
+    var=(1/length(y))*sumy-ybar**2
+    return int(var)
+def stdy(y):
+    var=variancey(y)
+    return var**0.5
+
+x=[50,50,55,60,65,65,65,60,60,60]
+y=[11,13,14,16,16,16,15,14,13,13]
+xy=numpy.empty(len(x),dtype=object)
+for i in range(len(x)):
+    for j in range(len(y)):
+        if(i==j):
+            xy[i]=x[i]*y[j]
+print(xy)
+x2=numpy.empty(len(x),dtype=object)
+y2=numpy.empty(len(x),dtype=object)
+x2=sqauress(x,x2)
+print(x2)
+y2=sqauress(y,y2)
+print(y2)
+xbar=mean(x)
+print(int(xbar))
+ybar=mean(y)
+print(int(ybar))
+sumxy=sums(xy)
+print(xy)
+sumx=sums(x2)
+print(sumx)
+sumy=sums(y2)
+print(sumy)
+covxy=cov()
+print(covxy)
+stdx=stdx(x)
+print(stdx)
+stdy=stdy(y)
+print(stdy)
+r=covxy/(stdx*stdy)
+print(r)
